@@ -12,6 +12,38 @@
 
 import os
 import sys
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  L33T GRAFFITI BANNER
+# ═══════════════════════════════════════════════════════════════════════════
+raw_banner = r"""
+ ██▓     ▓█████▄▄  ▓█████▄▄   ▄▄▄█████▓           ▄▄▄       ██▓███   ██▓  ██████  ▄████▄   ▄▄▄       ███▄    █  ██▀███  
+▓██▒     ▒░░░░▓██▒ ▒░░░░▓██▒ ▒░░░██▒░░          ▒████▄    ▓██░  ██▒▓██▒▒██    ▒ ▒██▀ ▀█  ▒████▄     ██ ▀█   █ ▓██ ▒ ██▒
+▒██▒          ▄██▒      ▄██▒     ██▒            ▒██  ▀█▄  ▓██░ ██▓▒▒██▒░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██  ▀█ ██▒▓██ ░▄█ ▒
+▒██▒         ░░██▒     ░░██▒     ██▒            ░██▄▄▄▄██ ▓██▄█▓▒ ▒░██░  ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▓██▒  ▐▌██▒▒██▀▀█  
+░██████▒ ▓█████▄▄▒ ▓█████▄▄▒     ██▒     ██████▒ ▓█   ▓██▒▒██▒ ░  ░░██░▒██████▒▒▒ ▓███▀  ░ ▓█   ▓██▒▒██░   ▓██░░██▓ ▒██▒
+  ░░░░░░  ▒░░░░░░░  ▒░░░░░░░      ░░       ░░░░░  ▒▒   ▓▒█░░▒▓▒░ ░  ░░▓  ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ░ ▒▓ ░▒▓░
+    ░░    ░   ░     ░   ░         ░               ░   ▒   ░░       ▒ ░ ░  ░  ░     ░   ░  ░  ░    ░   ▒      ░   ░ ░   ░░   
+                                                      ░            ░                   ░          ░  ░         ░    ░     
+"""
+
+
+def print_red_gradient(text_block: str) -> None:
+    """Print text_block line-by-line with a vertical shades-of-red RGB gradient."""
+    lines = text_block.strip('\n').split('\n')
+    total_lines = len(lines)
+    start_r, start_g, start_b = 255, 30, 30
+    end_r, end_g, end_b = 175, 10, 15
+    for i, line in enumerate(lines):
+        factor = i / (total_lines - 1) if total_lines > 1 else 0.0
+        r = int(start_r + (end_r - start_r) * factor)
+        g = int(start_g + (end_g - start_g) * factor)
+        b = int(start_b + (end_b - start_b) * factor)
+        ansi_color = f"\033[38;2;{r};{g};{b}m"
+        sys.stdout.write(f"{ansi_color}{line}\033[0m\n")
+    sys.stdout.flush()
+
+
 import json
 import re
 import time
@@ -2728,7 +2760,8 @@ def main():
     
     ansi = ANSI()
     
-    # Print banner
+    # Print banner (graffiti banner in red gradient + info box)
+    print_red_gradient(raw_banner)
     print(banner())
     print(f"{ansi.CYAN}Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}{ansi.RESET}")
     print(f"{ansi.CYAN}Search paths: {', '.join(args.path or ['/home directory'])}{ansi.RESET}")
