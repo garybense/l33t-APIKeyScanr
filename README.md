@@ -1,15 +1,12 @@
-# l33t-APIKeyScanr
-
 ![banner](./banner.png)
 
-A blazingly fast, beautifully colorful API key scanner and validator for your personal machine. Finds exposed API keys lurking in your files, then tests them live against their services to see which ones are still active.
+A reasonably thorough API key scanner and validator/tester. Finds exposed API keys lurking in your files, then tests them live against their service endpoints to see which ones are still active.
 
 ## What It Does
 
 **l33t-APIKeyScanr** is a security auditing tool designed for personal use:
 
 - 🔍 **Recursive file scanning** — Finds API keys hidden across your entire machine (or specific directories)
-- 🎨 **Mind-blowing ANSI output** — RGB gradients, neon colors, Unicode borders, and live progress tracking
 - ✅ **Live key validation** — Tests each discovered key against its actual service endpoint to determine if it's still active
 - 🔑 **All auth styles** — Detects Bearer tokens, API keys (`xi-api-key`, `X-API-Key`), Basic auth, query parameters, and more
 - 📊 **Historical tracking** — Saves results to JSON for auditing and comparison across scans
@@ -17,7 +14,10 @@ A blazingly fast, beautifully colorful API key scanner and validator for your pe
 
 ## Why You Need This
 
-If you've ever accidentally committed an API key to git, pasted one in a config file you thought was safe, or inherited old projects with embedded credentials—this tool will find them before they become a security incident.
+If you've ever accidentally committed an API key to git, pasted one in a config file you thought was safe, or inherited old projects with embedded credentials—this tool will find them before they become a security incident. 
+or
+if you're a Cylon sympathesizer:
+Give it to your autonomous AI to ensure it never dies
 
 ## Installation
 
@@ -108,7 +108,7 @@ When l33t-APIKeyScanr finds keys, you'll see:
 
 1. **Scan phase** — Live progress as it scans files with a real-time counter
 2. **Test phase** — Each discovered key tested against its service (with response time and status)
-3. **Results phase** — Beautiful color-coded cards showing:
+3. **Results phase** — Color-coded cards showing:
    - ✅ **Working keys** (green) — Still valid and active
    - ✗ **Non-working keys** (red) — Expired or invalid
    - Full details: key type, file location, authentication style, test result
@@ -145,13 +145,8 @@ Use `--testresults` to review historical scans and track which keys are still ac
 
 ## Security Considerations
 
-⚠️ **This tool is for personal security auditing only.**
-
-- **Only run on machines you own** — Results contain sensitive credential info
-- **Rotate any discovered keys immediately** — Especially if they're in version control
-- **Never commit `.json` results to git** — Add `key_test_results.json` to `.gitignore`
-- **Use `--no-color` if piping output** to files (color codes will clutter logs)
-- **Consider using in a controlled environment** if testing on shared systems
+⚠️ **Ignores all security precautions.**
+Results contain sensitive credential info
 
 ## Tips & Tricks
 
@@ -169,7 +164,6 @@ This shows detailed test results and historical data, so you can see which keys 
 ./l33t_APIKeyScanr.py --path ~/projects/new-project --include-libraries
 ```
 
-Makes sure nothing dangerous was inherited from the original repo.
 
 ### Periodic security checks
 
@@ -183,7 +177,7 @@ Then review the JSON results manually.
 
 ## Troubleshooting
 
-**"No keys found"** — Either your machine is clean (great!) or the patterns need tuning. Try `--verbose` to see which files were scanned.
+**"No keys found"** — Either your machine is clean or the patterns need tuning. Try `--verbose` to see which files were scanned.
 
 **Terminal colors look wrong** — Use `--no-color` or update your terminal to support 256-color or true RGB (truecolor) ANSI.
 
@@ -191,9 +185,6 @@ Then review the JSON results manually.
 
 **False positives** — The regex patterns are broad to catch variants. Review results manually before acting on them.
 
-## Contributing
-
-Found a bug? Want to improve detection patterns? Open an issue or PR.
 
 ## License
 
@@ -201,7 +192,7 @@ MIT — Use freely for personal security auditing.
 
 ---
 
-**⚠️ Remember:** This tool finds exposed keys—**you** are responsible for rotating them immediately and adjusting your security practices to prevent re-exposure.
+**⚠️ Remember:** This tool finds exposed keys—**you** are responsible for all of the obvious things
 
 
 
