@@ -1,30 +1,13 @@
 #!/usr/bin/env python3
 """
-╔══════════════════════════════════════════════════════════════════════════╗
-║  ██╗  ██╗ █████╗ ██╗      █████╗ ██████╗ ██╗     ██████╗ ██████╗ ██████╗ ║
-║  ██║  ██║██╔══██╗██║     ██╔══██╗██╔══██╗██║     ██╔═══██╗██╔══██╗██╔══██╗ ║
-║  ███████║███████║██║     ███████║██████╔╝██║     ██║   ██║██████╔╝██████╔╝ ║
-║  ██╔══██║██╔══██║██║     ██╔══██║██╔══██╗██║     ██║   ██║██╔══██╗██╔══██╗ ║
-║  ██║  ██║██║  ██║███████╗██║  ██║██████╔╝███████╗╚██████╔╝██████╔╝██████╔╝ ║
-║  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ║
-║                                                                              ║
-║  ████████╗███████╗██████╗ ██████╗ ███████╗    ████████╗███╗   ██╗███████╗ ║
-║  ╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔════╝    ╚══██╔══╝████╗  ██║██╔════╝ ║
-║     ██║   █████╗  ██████╔╝██████╔╝█████╗         ██║   ██╔██╗ ██║█████╗   ║
-║     ██║   ██╔══╝  ██╔══██╗██╔══██╗██╔══╝         ██║   ██║╚██╗██║██╔══╝   ║
-║     ██║   ███████╗██║  ██║██████╔╝███████╗       ██║   ██║ ╚████║███████╗ ║
-║     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝       ╚═╝   ╚═╝  ╚═══╝ ╚══════╝ ║
-║                                                                              ║
-║  ╔══════════════════════════════════════════════════════════════════════╗  ║
-║  ║          Elite ANSI Terminal API Key Scanner & Tester                ║  ║
-║  ║          ───────────────────────────────────────────────────────────  ║  ║
-║  ║  • Mind-Blowingly Colorful Output                                  ║  ║
-║  ║  • All Auth Styles (Bearer, xi-api-key, X-API-Key, Basic, Query)  ║  ║
-║  ║  • Scan Your Entire Drive                                          ║  ║
-║  ║  • Test Each Key Live                                              ║  ║
-║  ║  • Super Stylized Results                                          ║  ║
-║  ╚══════════════════════════════════════════════════════════════════════╝  ║
-╚══════════════════════════════════════════════════════════════════════════╝
+ ██▓     ▓█████▄▄  ▓█████▄▄   ▄▄▄█████▓           ▄▄▄       ██▓███   ██▓  ██████  ▄████▄   ▄▄▄       ███▄    █  ██▀███  
+▓██▒     ▒░░░░▓██▒ ▒░░░░▓██▒ ▒░░░██▒░░          ▒████▄    ▓██░  ██▒▓██▒▒██    ▒ ▒██▀ ▀█  ▒████▄     ██ ▀█   █ ▓██ ▒ ██▒
+▒██▒          ▄██▒      ▄██▒     ██▒            ▒██  ▀█▄  ▓██░ ██▓▒▒██▒░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██  ▀█ ██▒▓██ ░▄█ ▒
+▒██▒         ░░██▒     ░░██▒     ██▒            ░██▄▄▄▄██ ▓██▄█▓▒ ▒░██░  ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▓██▒  ▐▌██▒▒██▀▀█  
+░██████▒ ▓█████▄▄▒ ▓█████▄▄▒     ██▒     ██████▒ ▓█   ▓██▒▒██▒ ░  ░░██░▒██████▒▒▒ ▓███▀  ░ ▓█   ▓██▒▒██░   ▓██░░██▓ ▒██▒
+  ░░░░░░  ▒░░░░░░░  ▒░░░░░░░      ░░       ░░░░░  ▒▒   ▓▒█░░▒▓▒░ ░  ░░▓  ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ░ ▒▓ ░▒▓░
+    ░░    ░   ░     ░   ░         ░               ░   ▒   ░░       ▒ ░ ░  ░  ░     ░   ░  ░  ░    ░   ▒      ░   ░ ░   ░░   
+                                                      ░            ░                   ░          ░  ░         ░    ░     
 """
 
 import os
@@ -2150,7 +2133,7 @@ def test_key(key_info: Dict[str, Any], provider_registry: Dict[str, ProviderAuth
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  ELITE ANSI FORMATTING
+#  L33T ANSI FORMATTING
 # ═══════════════════════════════════════════════════════════════════════════
 def draw_loading_bar(progress: float, width: int = 40) -> str:
     """Draw a loading bar with gradient effect."""
@@ -2363,7 +2346,7 @@ def display_collected_keys_box():
 
 
 def banner() -> str:
-    """Generate the elite banner."""
+    """Generate the l33t banner."""
     ansi = ANSI()
     lines = [
         ansi.cyber_title("█ K-RAD API KEY SCANNER & TESTER █", 72, gradient=True),
@@ -2645,7 +2628,7 @@ def append_results_to_file(
 
 
 def summary_banner(working: List[Dict], non_working: List[Dict]) -> str:
-    """Draw summary with elite styling."""
+    """Draw summary with l33t styling."""
     ansi = ANSI()
     total = len(working) + len(non_working)
     
@@ -2670,7 +2653,7 @@ def summary_banner(working: List[Dict], non_working: List[Dict]) -> str:
 def main():
     parser = argparse.ArgumentParser(
         description=(
-            'Elite API Key Scanner & Tester\n'
+            'l33t API Key Scanner & Tester\\n'
             'Scans the filesystem for API keys and tests them live.\n'
             'Supports Bearer, Header, Query, Basic, and Body authentication.'
         ),
